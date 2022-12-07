@@ -1,4 +1,6 @@
-f = open("input.txt", "r")
+import os
+import sys
+f = open(os.path.join(sys.path[0], "input.txt"), "r")
 
 score=0
 
@@ -17,4 +19,4 @@ for x in f:
 
 f.close()
 
-print("Score: " + str(score) ) # 23 difference
+print("Score: " + str(score) )
