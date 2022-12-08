@@ -27,7 +27,13 @@ class assignedSegment:
         return self.prettyPrint
     
     def overlaps(self, otherSegment):
-        if(self.start >= otherSegment.end or self.end <= otherSegment.start or (self.start >= otherSegment.start and self.end <= otherSegment.end)):
+        myRange = range(self.start, self.end)
+        theirRange = range(otherSegment.start, otherSegment.end)
+        intersection = range(max(myRange.start,theirRange.start), min(myRange.stop-1,theirRange.stop-1)+1)
+
+        print(intersection.start <= intersection.stop)
+
+        if(intersection.start <= intersection.stop):
             return True
         
         return False
@@ -47,7 +53,7 @@ for x in f:
 
     print(part1.print())
     print(part2.print())
-    if(part1.overlaps(part2) or part2.overlaps(part1)):
+    if(part1.overlaps(part2)):
         print("overlap")
         pairsContainedInOtherPairs+=1
     
